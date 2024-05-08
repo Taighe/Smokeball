@@ -1,0 +1,58 @@
+﻿<Window x:Class="Project.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project.ViewModels"
+        mc:Ignorable="d"
+        Title="SEO Application" Height="450" Width="800">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="convertor"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <local:SEOViewModel/>
+    </Window.DataContext>
+    <Grid Margin="5,5,5,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter key words:" VerticalAlignment="Center" Grid.Row="0"/>
+        <TextBox Grid.Row="1">
+            <TextBox.Text>
+                <Binding Path="Input.Keywords" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter url:" VerticalAlignment="Center" Grid.Row="2"/>
+        <TextBox Grid.Row="3">
+            <TextBox.Text>
+                <Binding Path="Input.Url" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button Margin="0,5,0,0" Content="Enter" Grid.Row="4" Width="70" HorizontalAlignment="Left" VerticalAlignment="Stretch" Command="{Binding GetDataCommand}" CommandParameter="{Binding Input}"/>
+        <Rectangle Fill="#FFF4F4F5" Stroke="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Grid.RowSpan="6" />
+        <TextBlock Margin="5,5,5,5" Text="{Binding Result.Information, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Grid.RowSpan="10"/>
+        
+        <StatusBar Name="sbar" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Beige" Grid.Column="2" Grid.Row="11">
+            <StatusBarItem>
+                <TextBlock FontSize="10" Visibility="{Binding Input.IsRequestingData, Converter={StaticResource convertor}}">Searching...</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
