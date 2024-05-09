@@ -1,7 +1,7 @@
-# Smokeball Development Assement
+# Smokeball Development Assessment
 By Taighe Warner-Hunt
 
-Please open the smokeball solution, and look at the 2 projects.
+Please open the smokeball solution, and look at the two projects.
 
 - Project
 - UT (Unit Tests)
