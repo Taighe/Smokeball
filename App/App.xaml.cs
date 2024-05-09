@@ -9,7 +9,7 @@ using System.Windows;
 namespace Project
 {
     // --------------------------------------
-    // Smokeball Development Assement
+    // Smokeball Development Assessment
     // --------------------------------------
     /// <summary>
     /// Interaction logic for App.xaml
