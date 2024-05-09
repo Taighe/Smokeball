@@ -27,29 +27,15 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter key words:" VerticalAlignment="Center" Grid.Row="0"/>
-        <TextBox Grid.Row="1">
-            <TextBox.Text>
-                <Binding Path="Input.Keywords" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+        <TextBlock  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter key words:" VerticalAlignment="Center" Grid.Row="0"/>
+        <TextBox Text="{Binding Input.Keywords, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter url:" VerticalAlignment="Center" Grid.Row="2"/>
-        <TextBox Grid.Row="3">
-            <TextBox.Text>
-                <Binding Path="Input.Url" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+        <TextBox Text="{Binding Input.Url, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3"/>
         <Button Margin="0,5,0,0" Content="Enter" Grid.Row="4" Width="70" HorizontalAlignment="Left" VerticalAlignment="Stretch" Command="{Binding GetDataCommand}" CommandParameter="{Binding Input}"/>
         <Rectangle Fill="#FFF4F4F5" Stroke="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Grid.RowSpan="6" />
         <TextBlock Margin="5,5,5,5" Text="{Binding Result.Information, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Grid.RowSpan="10"/>
         
-        <StatusBar Name="sbar" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Beige" Grid.Column="2" Grid.Row="11">
+        <StatusBar HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Beige" Grid.Column="2" Grid.Row="11">
             <StatusBarItem>
                 <TextBlock FontSize="10" Visibility="{Binding Input.IsRequestingData, Converter={StaticResource convertor}}">Searching...</TextBlock>
             </StatusBarItem>

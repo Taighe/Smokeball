@@ -20,7 +20,7 @@ namespace Project
     {
         public App()
         {
-            Console.WriteLine("Test");
+        
         }
     }
 }
